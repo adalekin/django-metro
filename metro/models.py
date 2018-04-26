@@ -56,7 +56,8 @@ class MetroLine(models.Model):
 class Metro(models.Model):
     line = models.ForeignKey(
         MetroLine,
-        verbose_name=_('Metro line')
+        verbose_name=_('Metro line'),
+        on_delete=models.CASCADE
     )
     title = models.CharField(
         max_length=255,
