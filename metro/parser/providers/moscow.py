@@ -31,7 +31,7 @@ class DataProvider(BaseRuDataProvider):
 
     def download_stations(self):
         html = self.create_dom(self.metro_stations_src)
-        table = html.find('table', 'wikitable')
+        table = html.find('table', 'standard')
         lines = self.line_model.get_all()
         for i, row in enumerate(table.find_all('tr')):
             if i == 0:
@@ -43,7 +43,7 @@ class DataProvider(BaseRuDataProvider):
                     if value and value.isdigit():
                         line = int(value)
                 elif j == 1:
-                    title = cell.find('span').string
+                    title = (cell.find('span') or cell.find('a')).string
             try:
                 line_inst = lines[line]
             except KeyError:
