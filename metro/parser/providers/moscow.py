@@ -12,7 +12,7 @@ class DataProvider(BaseRuDataProvider):
 
     def download_lines(self):
         html = self.create_dom(self.metro_lines_src)
-        table = html.find('table')
+        table = html.find('table', 'wikitable')
         for i, row in enumerate(table.find_all('tr')):
             if i == 0:
                 continue
