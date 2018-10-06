@@ -40,7 +40,7 @@ class DataProvider(BaseRuDataProvider):
                 if j == 0:
                     line = 0
                     value = cell.find('span', 'sortkey').string
-                    if value and value.isdigit():
+                    if value:
                         line = int(value)
                 elif j == 1:
                     title = (cell.find('span') or cell.find('a')).string
