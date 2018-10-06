@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import requests
 from django.db import models
 from django.utils.translation import ugettext as _
 import six
@@ -12,21 +11,16 @@ class MetroLine(models.Model):
         verbose_name=_('Title')
     )
     color = models.CharField(
-        max_length=255,
+        max_length=7,
         verbose_name=_('Color'),
         blank=True,
         null=True,
     )
-    number = models.IntegerField(
+    number = models.CharField(
+        max_length=4,
         verbose_name=_('Line number'),
         null=True,
         blank=True
-    )
-    icon = models.ImageField(
-        upload_to='metro/',
-        verbose_name=_('Icon'),
-        blank=True,
-        null=True,
     )
 
     @classmethod
@@ -34,7 +28,7 @@ class MetroLine(models.Model):
         items = cls.objects.all()
         result = dict()
         for item in items:
-            result[ item.number ] = item
+            result[item.number] = item
         return result
 
     def get_admin_color(self):

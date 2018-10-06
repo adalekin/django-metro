@@ -16,17 +16,17 @@ class DataProvider(BaseRuDataProvider):
         for i, row in enumerate(table.find_all('tr')):
             if i == 0:
                 continue
-            number = 0
+            number = None
             for j, cell in enumerate(row.find_all('td')):
                 value = cell.string
                 if j == 0:
-                    if value and value.isdigit():
-                        number = int(value)
+                    if value:
+                        number = value
                 elif j == 1:
                     title = value
                 elif j == 2:
                     color = value
-            if number > 0:
+            if number:
                 self.get_or_create_line(number, title, '#' + color)
 
     def download_stations(self):
@@ -38,10 +38,10 @@ class DataProvider(BaseRuDataProvider):
                 continue
             for j, cell in enumerate(row.find_all('td')):
                 if j == 0:
-                    line = 0
+                    line = None
                     value = cell.find('span', 'sortkey').string
                     if value:
-                        line = int(value)
+                        line = value.strip().lstrip('0')
                 elif j == 1:
                     title = (cell.find('span') or cell.find('a')).string
             try:

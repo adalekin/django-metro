@@ -30,9 +30,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=255, verbose_name='Название')),
-                ('color', models.CharField(blank=True, max_length=255, null=True, verbose_name='Цвет')),
-                ('number', models.IntegerField(blank=True, null=True, verbose_name='Номер линии')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='metro/', verbose_name='Иконка')),
+                ('color', models.CharField(max_length=7, blank=True, null=True, verbose_name='Цвет')),
+                ('number', models.CharField(max_length=4, blank=True, null=True, verbose_name='Номер линии')),
             ],
             options={
                 'verbose_name': 'Линия метро',

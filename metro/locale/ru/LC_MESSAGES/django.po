@@ -35,10 +35,6 @@ msgstr "Цвет"
 msgid "Line number"
 msgstr "Номер линии"
 
-#: models.py:25
-msgid "Icon"
-msgstr "Иконка"
-
 #: models.py:49 models.py:56
 msgid "Metro line"
 msgstr "Линия метро"
